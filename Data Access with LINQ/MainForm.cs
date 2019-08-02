@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +80,62 @@ namespace Data_Access_with_LINQ
             {
                 Debug.WriteLine("Student ID: " + student.StudentID + "Last Name: " + student.LastName);
             }
+        }
+
+        private void StudentDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            //local scope aliases 
+            var rowIndex = StudentDataGridView.CurrentCell.RowIndex;
+            var rows = StudentDataGridView.Rows;
+            var columnCount = StudentDataGridView.ColumnCount;
+            var cells = rows[rowIndex].Cells;
+
+            rows[rowIndex].Selected = true;
+
+            string outputString = string.Empty;
+            for (int index = 0; index < columnCount; index++)
+            {
+                outputString += cells[index].Value.ToString() + " ";
+            }
+
+            SelectionLabel.Text = outputString;
+
+            Program.student.id = int.Parse(cells[(int)StudentField.ID].Value.ToString());
+            Program.student.StudentID = cells[(int)StudentField.STUDENT_ID].Value.ToString();
+            Program.student.FirstName = cells[(int)StudentField.FIRST_NAME].Value.ToString();
+            Program.student.LastName = cells[(int)StudentField.LAST_NAME].Value.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //open the stream to write
+            using (StreamWriter outputString = new StreamWriter(
+                File.Open("Student.txt", FileMode.Create)))
+            {
+                //write stuff to the file
+                outputString.WriteLine(Program.student.id);
+                outputString.WriteLine(Program.student.StudentID);
+                outputString.WriteLine(Program.student.FirstName);
+                outputString.WriteLine(Program.student.LastName);
+
+                //cleanup
+                outputString.Close();
+                outputString.Dispose();
+            }
+            MessageBox.Show("File Saved Successfully!", "Savings...",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
+        }
+
+        private void NextButton_Click(object sender, EventArgs e)
+        {
+            Program.studentInfoForm.Show();
+            this.Hide();
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Data_Access_with_LINQ
         public static StartForm startForm;
         public static MainForm mainForm;
         public static AboutForm aboutForm;
+        public static Student student;
+        public static StudentInfoForm studentInfoForm;
 
         /// <summary>
         /// The main entry point for the application.
@@ -24,6 +26,9 @@ namespace Data_Access_with_LINQ
             startForm = new StartForm();
             mainForm = new MainForm();
             aboutForm = new AboutForm();
+            studentInfoForm = new StudentInfoForm();
+
+            student = new Student();
 
             Application.Run(startForm);
         }
