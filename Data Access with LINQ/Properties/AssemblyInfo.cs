@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Data Access with LINQ")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("This application demonstrates MenuStrips, ToolStrips and the DataGridView")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("Data Access with LINQ")]
+[assembly: AssemblyCompany("Centennial College")]
+[assembly: AssemblyProduct("My App")]
 [assembly: AssemblyCopyright("Copyright © HP Inc. 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

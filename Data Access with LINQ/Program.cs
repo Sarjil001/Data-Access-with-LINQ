@@ -6,8 +6,12 @@ using System.Windows.Forms;
 
 namespace Data_Access_with_LINQ
 {
-    static class Program
+    public static class Program
     {
+        public static StartForm startForm;
+        public static MainForm mainForm;
+        public static AboutForm aboutForm;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +20,12 @@ namespace Data_Access_with_LINQ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            startForm = new StartForm();
+            mainForm = new MainForm();
+            aboutForm = new AboutForm();
+
+            Application.Run(startForm);
         }
     }
 }
